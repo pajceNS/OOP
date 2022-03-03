@@ -6,51 +6,64 @@ namespace domaci1
 {
     internal class Program
     {
-        public static void CalculateCircumferenceAndArea()
-        {
-            //r=5
-            //result povrsina 78.54
-            //obim 31.42
-            double r = 5;
-            double obim = (2 * r) * Math.PI;
-            double povrsina = r * r * Math.PI;
-
-            Console.WriteLine($"Obim je: {obim}, Povrsina je: {povrsina}");
-            Console.WriteLine(povrsina);
-
-
-        }
-        public static void Zadatak1()
+        public static void Task1()
         {
             //inputArray = [ 1, 2, 4, 5, 8, 9 ]
             //Result = 14
-            int[] niz = { 1, 2, 4, 5, 8, 9 };
-            int zbir = 0;
-            for (int i = 0; i < niz.Length; i++)
-                if (niz[i] % 2 == 0)
+            int[] array = { 1, 2, 4, 5, 8, 9 };
+            int sum = 0;
+            for (int i = 0; i < array.Length; i++)
+                if (array[i] % 2 == 0)
                 {
-                    zbir = niz[i] + zbir;
+                    sum = array[i] + sum;
                     //zbir += niz[i];
                 }
-            Console.WriteLine($"Zbir svih parnih brojeva je {zbir}");
+            Console.WriteLine($"The sum of all even numbers is {sum}");
         }
 
-        public static void Zadatak2()
+        public static void Task2()
         {
-            string str = "abeceda";
-            char ch = 'a';
+            //string str = "abeceda";
+            //char ch = 'a';
+            //int freq = str.Count(f => (f == ch));
+            //Console.WriteLine(freq);
 
-            int freq = str.Count(f => (f == ch));
-            Console.WriteLine(freq);
+            string abeceda = "abeceda";
+            int counter = 0;
+            foreach (char c in abeceda)
+            {
+                if (c == 'a')
+                {
+                    counter++;
+                }
+            }
 
+            int counter1 = 0;
+            for (int i = 0; i < abeceda.Length; i++)
+            {
+                if (abeceda[i] == 'a')
+                {
+                    counter1++;
+                }
+            }
+            Console.WriteLine(counter);
+            Console.WriteLine(counter1);
         }
-
-
+        public static void CalculateCircumferenceAndArea()
+        {
+            //r=5
+            //result area 78.54
+            //result circumference 31.42
+            double r = 5;
+            double circumference = (2 * r) * Math.PI;
+            double area = r * r * Math.PI;
+            Console.WriteLine($"Circumference is: {circumference}, Area is: {area}");
+        }
         static void Main(string[] args)
         {
             CalculateCircumferenceAndArea();
-            Zadatak1();
-            Zadatak2();
+            Task1();
+            Task2();
         }
     }
 }
