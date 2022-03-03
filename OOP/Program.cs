@@ -1,56 +1,33 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 
-
-namespace domaci1
+namespace StudentOffice
 {
-    internal class Program
+    class MainClass
     {
-        public static void CalculateCircumferenceAndArea()
+        public static void Main(string[] args)
         {
-            //r=5
-            //result povrsina 78.54
-            //obim 31.42
-            double r = 5;
-            double obim = (2 * r) * Math.PI;
-            double povrsina = r * r * Math.PI;
+            List<Subject> subjects = new List<Subject>
+            {
+                new Subject(1, "Genetics", 5),
+                new Subject(2, "Embryology", 6),
+                new Subject(3, "ART", 4)
+            };
 
-            Console.WriteLine($"Obim je: {obim}, Povrsina je: {povrsina}");
-            Console.WriteLine(povrsina);
-
-
-        }
-        public static void Zadatak1()
-        {
-            //inputArray = [ 1, 2, 4, 5, 8, 9 ]
-            //Result = 14
-            int[] niz = { 1, 2, 4, 5, 8, 9 };
-            int zbir = 0;
-            for (int i = 0; i < niz.Length; i++)
-                if (niz[i] % 2 == 0)
-                {
-                    zbir = niz[i] + zbir;
-                    //zbir += niz[i];
-                }
-            Console.WriteLine($"Zbir svih parnih brojeva je {zbir}");
-        }
-
-        public static void Zadatak2()
-        {
-            string str = "abeceda";
-            char ch = 'a';
-
-            int freq = str.Count(f => (f == ch));
-            Console.WriteLine(freq);
-
-        }
+            Student Nemanja = new Student(14, "Nemanja", "Pajcin");
+            Professor Stefan = new Professor("Stefan", 700, subjects);
+            Exam exam = new Exam(Stefan, Nemanja, subjects[0]);
+            Exam exam2 = new Exam(Stefan, Nemanja, subjects[1]);
+            Exam exam3 = new Exam(Stefan, Nemanja, subjects[2]);
+            StudentOffice studentOffice = new StudentOffice();
 
 
-        static void Main(string[] args)
-        {
-            CalculateCircumferenceAndArea();
-            Zadatak1();
-            Zadatak2();
+            studentOffice.SaveExam(exam);
+            studentOffice.SaveExam(exam2);
+            studentOffice.SaveExam(exam3);
+
+            studentOffice.PrintExamReport();
+
         }
     }
 }
